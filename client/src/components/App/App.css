@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.slogen {
+  text-align: center;
+  color: black;
+}
+
+header {
+  background-color: #f5ba13;
+  margin: auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.signup {
+  margin-right: 10px;
+  columns: white;
+}
