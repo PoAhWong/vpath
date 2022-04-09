@@ -1,14 +1,18 @@
 img {
   display: block;
   position: absolute;
-  top: 391px;
-  left: 230px;
+  top: 377px;
+  left: 325px;
   width: 8%;
   height: width;
+  opacity: 0.3;
+}
+img:hover {
+  opacity: 1;
 }
 
 p {
-  font-size: 0.7em;
+  font-size: 0.8em;
   text-align: left;
   padding-left: 28px;
   margin: 0;

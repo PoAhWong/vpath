@@ -3,6 +3,7 @@ import view from "../Images/view.png";
 import hide from "../Images/visibility.png";
 import "./SignUpForm.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 class SignUpForm extends React.Component {
   state = {
     password: "",
@@ -11,12 +12,16 @@ class SignUpForm extends React.Component {
     img: "hide",
   };
 
+  navigate = () => {
+    const navigate = useNavigate();
+    navigate("/Login");
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const data = Object.fromEntries(new FormData(form));
     delete data.password2;
-    console.log(data);
     axios
       .post("/api/users", data)
       .then((res) => res.data)
@@ -142,6 +147,7 @@ class SignUpForm extends React.Component {
             Sumbit
           </button>
         </form>
+
         {this.displayMessage(this.state.password, this.state.password2)}
       </div>
     );

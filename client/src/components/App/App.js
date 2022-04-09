@@ -5,6 +5,7 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Home from "./Home";
 import AccountBox from "../AccountBox/AccountBox";
 import Main from "../Main/Main";
+import Footer from "./Footer";
 
 function App() {
   const navigate = useNavigate();
@@ -24,29 +25,53 @@ function App() {
     navigate("/main");
   };
 
+  const handleLogout = (event) => {
+    event.preventDefault();
+    setUserId("");
+    setUsername("");
+  };
+
   return (
     <div className="App">
       <header>
         <nav className="nav_bar">
-          <Link to={!!userName ? "/main" : "/home"}>
-            {!!userName ? userName : "VPath"}
+          <Link
+            to={!!userName ? "/main" : "/home"}
+            style={{ textDecoration: "none" }}
+          >
+            <h1>{!!userName ? userName : "VPath"}</h1>
           </Link>
           <div className="user">
-            <Link className="signup" to="/sign_up">
-              SignUp
+            <Link
+              className="signup"
+              to="/sign_up"
+              style={{ textDecoration: "none" }}
+            >
+              {!!userName ? (
+                <h1 onClick={handleLogout}>Logout</h1>
+              ) : (
+                <h1>Sign Up</h1>
+              )}
             </Link>
-            <Link to="/login">Login</Link>
           </div>
         </nav>
       </header>
+      <Footer />
       <Routes>
         <Route path="/" element={<Home name={userName} id={userId} />} />
-        <Route path="/home" element={<Home name={userName} id={userId} />} />
-        <Route path="/main" element={<Main name={userName} id={userId} />} />
-        <Route path="/sign_up" element={<AccountBox accountForm="signup" />} />
         <Route
-          path="/Login"
-          element={<AccountBox accountForm="login" handleLogin={handleLogin} />}
+          path="/home"
+          element={<Home userName={userName} userId={userId} />}
+        />
+        <Route
+          path="/main"
+          element={<Main userName={userName} userId={userId} />}
+        />
+        <Route
+          path="/sign_up"
+          element={
+            <AccountBox accountForm="signup" handleLogin={handleLogin} />
+          }
         />
       </Routes>
     </div>

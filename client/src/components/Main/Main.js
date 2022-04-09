@@ -1,7 +1,11 @@
-function Main() {
+import Note from "./Note";
+import Progress from "./Progress";
+import React, { useState } from "react";
+function Main({ userName, userId }) {
   return (
     <div className="main">
-      <p>Welcome Back</p>
+      <Progress />
+      <Note userId={userId} />
     </div>
   );
 }

@@ -8,6 +8,7 @@ const sessions = require("./middlewares/sessions");
 
 const usersController = require("./controllers/users_controller");
 const sessionsController = require("./controllers/sessions_controller");
+const notesController = require("./controllers/notes_controller");
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -23,6 +24,7 @@ app.use(express.json());
 
 app.use(sessions);
 
+app.use("/api/notes", notesController);
 app.use("/api/users", usersController);
 app.use("/api/sessions", sessionsController);
 

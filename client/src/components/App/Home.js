@@ -1,7 +1,7 @@
-function Home({ name, id }) {
+function Home({ userName, userId }) {
   return (
     <div>
-      <h1 className="slogen">Visualize your path {name}</h1>
+      <h1 className="slogen">Visualize your path {userName}</h1>
 
       <h3>
         Keep tracking your hours spent, your to do list and the overall path.
