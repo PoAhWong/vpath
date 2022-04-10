@@ -13,7 +13,12 @@ CREATE TABLE notes(
     user_id INT,
     title TEXT,
     content TEXT,
+    post_day INT,
     post_date DATE NOT NULL DEFAULT CURRENT_DATE
 )
 
-INSERT INTO notes(user_id, title, content) VALUES (5, 'Component', 'finish notes function');
+CREATE TABLE path(
+    id SERIAL PRIMARY KEY,
+    user_id INT,
+    create_date DATE NOT NULL DEFAULT CURRENT_DATE
+)

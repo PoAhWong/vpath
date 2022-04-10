@@ -1,19 +1,25 @@
 const express = require("express");
 const Note = require("../models/note");
-const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
-router.get("/:userId", (req, res) => {
-  Note.findAllByUserId(req.params.userId).then((user) => {
+router.get("/:userId/:day", (req, res) => {
+  console.log(req.params);
+  const { userId, day } = req.params;
+  Note.findNotesByDay(userId, day).then((user) => {
     console.log(user);
     return res.json(user);
   });
 });
 
+// router.get("/", (req, res) => {
+//   console.log(req);
+//   Note.findNotesByDate(id, dateDiff).then((dbRes) => res.json(dbRes));
+// });
+
 router.post("/", (req, res) => {
-  const { userId, title, content } = req.body;
-  Note.create(userId, title, content).then((dbRes) => res.json(dbRes));
+  const { userId, title, content, day } = req.body;
+  Note.create(userId, title, content, day).then((dbRes) => res.json(dbRes));
 });
 
 router.put("/", (req, res) => {

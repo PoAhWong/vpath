@@ -6,7 +6,7 @@ function LoginForm({ handleLogin }) {
       <form action="" onSubmit={handleLogin}>
         <input type="email" name="email" placeholder="Email" />
         <input type="password" name="password" placeholder="Password" />
-        <button className="submit">Submit</button>
+        <button className="submit">Login</button>
       </form>
     </div>
   );

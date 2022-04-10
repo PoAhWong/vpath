@@ -1,16 +1,29 @@
 const db = require("../db/db");
 
 const Note = {
-  create: (userId, title, content) => {
-    const sql = `INSERT INTO notes(user_id, title, content) VALUES ($1, $2, $3) RETURNING *
+  create: (userId, title, content, day) => {
+    console.log(userId, day);
+    const postDay = Number(day);
+    const sql = `INSERT INTO notes(user_id, title, content, post_day) VALUES ($1, $2, $3, $4) RETURNING *
     `;
-    return db.query(sql, [userId, title, content]).then((dbRes) => dbRes);
+    return db
+      .query(sql, [userId, title, content, postDay])
+      .then((dbRes) => dbRes);
   },
 
-  findAllByUserId: (id) => {
+  findNotesByDay: (id, day) => {
     const sql = `
         SELECT * FROM notes
-        WHERE user_id = $1 AND post_date = CURRENT_DATE
+        WHERE user_id = $1 AND post_day = $2
+    `;
+    return db.query(sql, [id, day]).then((dbRes) => dbRes.rows);
+  },
+
+  findNotesByDate: (id, dateDiff) => {
+    console.log(typeof id, typeof dateDiff);
+    const sql = `
+      SELECT * FROM notes
+      WHERE user_id = $1 AND post_date = CURRENT_DATE
     `;
     return db.query(sql, [id]).then((dbRes) => dbRes.rows);
   },

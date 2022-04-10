@@ -89,24 +89,25 @@ class SignUpForm extends React.Component {
       const compareColor = password == password2 ? "green" : "red";
       return (
         <div className="message">
+          <p>Password needs contain: </p>
           <p className="capital" style={{ color: capitalColor }}>
-            Password better contains a capital letter
+            At least one capital letter
           </p>
 
           <p className="letter" style={{ color: letterColor }}>
-            Password better contains a letter
+            At least one lower letter
           </p>
           <p className="number" style={{ color: numberColor }}>
-            Password better contains at a number
+            At least one number
           </p>
           <p className="special" style={{ color: specialCharColor }}>
-            Password better contains a special character
+            At least one special character
           </p>
           <p className="length" style={{ color: lengthColor }}>
-            Password better contains 10 characters
+            At least 10 characters
           </p>
           <p className="compare" style={{ color: compareColor }}>
-            Passwords need to match
+            Match with each other
           </p>
         </div>
       );
@@ -144,7 +145,7 @@ class SignUpForm extends React.Component {
               this.state.password2
             )}
           >
-            Sumbit
+            Sign Up
           </button>
         </form>
 
