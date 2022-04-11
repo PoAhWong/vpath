@@ -54,7 +54,7 @@ function AccountBox({ accountForm, handleLogin }) {
         </div>
         <div className="bottom_container">
           {form === "signup" ? (
-            <SignUpForm />
+            <SignUpForm playExpandingAnimation={playExpandingAnimation} />
           ) : (
             <LoginForm handleLogin={handleLogin} />
           )}

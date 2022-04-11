@@ -5,17 +5,16 @@ import "./SignUpForm.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 class SignUpForm extends React.Component {
-  state = {
-    password: "",
-    password2: "",
-    textType: "password",
-    img: "hide",
-  };
-
-  navigate = () => {
-    const navigate = useNavigate();
-    navigate("/Login");
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      password: "",
+      password2: "",
+      textType: "password",
+      img: "hide",
+      playExpandingAnimation: props.playExpandingAnimation,
+    };
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +25,7 @@ class SignUpForm extends React.Component {
       .post("/api/users", data)
       .then((res) => res.data)
       .then((userName) => console.log(userName));
+    this.state.playExpandingAnimation();
   };
 
   handleChange = (event) => {
